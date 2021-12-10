@@ -1,17 +1,15 @@
 <section fxLayout="column" fxLayoutAlign="center center">
-  <mat-card *ngFor="let now of weather.weather">
+  <mat-card>
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>{{ now.main }}</mat-card-title>
-      <mat-card-subtitle>{{ now.description }}</mat-card-subtitle>
+      <mat-card-title>{{ weather.main }}</mat-card-title>
+      <mat-card-subtitle>{{ weather.description }}</mat-card-subtitle>
     </mat-card-header>
 
     <mat-card-content>
-      <p>
-        The Shiba Inu is the smallest of the six original and distinct spitz
-        breeds of dog from Japan. A small, agile dog that copes very well with
-        mountainous terrain, the Shiba Inu was originally bred for hunting.
-      </p>
+      <p>{{ weatherDetails.temp }}</p>
+      <p>{{ weatherDetails.temp_min }}</p>
+      <p>{{ weatherDetails.temp_max }}</p>
     </mat-card-content>
     <mat-card-actions>
       <button mat-button>LIKE</button>
