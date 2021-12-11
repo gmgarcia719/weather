@@ -2,3 +2,7 @@ mat-card {
   width: 400px;
   height: 600px;
 }
+
+p {
+  font-size: larger;
+}

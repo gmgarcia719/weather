@@ -1,19 +1,51 @@
 <section fxLayout="column" fxLayoutAlign="center center">
   <mat-card>
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>{{ weather.main }}</mat-card-title>
-      <mat-card-subtitle>{{ weather.description }}</mat-card-subtitle>
-    </mat-card-header>
-
-    <mat-card-content>
-      <p>{{ weatherDetails.temp }}</p>
-      <p>{{ weatherDetails.temp_min }}</p>
-      <p>{{ weatherDetails.temp_max }}</p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions>
+    <mat-grid-list cols="3">
+      <mat-grid-tile [colspan]="2">
+        <div fxLayout fxLayoutAlign="center center">
+          <mat-card-title>{{ weather.main }}</mat-card-title>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1"
+        ><mat-card-title
+          >🌡{{ weatherDetails.temp }}</mat-card-title
+        ></mat-grid-tile
+      >
+      <mat-grid-tile [colspan]="2" [rowspan]="2">
+        <img
+          src="https://openweathermap.org/img/wn/{{ weather.icon }}@4x.png"
+          alt="weather picture"
+        />
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1">
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <h2>Today's High</h2>
+          <p>{{ weatherDetails.temp_max }}</p>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1">
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <h2>Today's Low</h2>
+          <p>{{ weatherDetails.temp_min }}</p>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="3">
+        <mat-card-content fxLayout>
+          <p>
+            {{ weather.description }} with winds speeds of {{ wind.speed }}mph
+          </p>
+        </mat-card-content>
+      </mat-grid-tile>
+    </mat-grid-list>
   </mat-card>
 </section>
+
+<!-- 
+<mat-card-subtitle></mat-card-subtitle>
+
+
+
+<mat-card-actions>
+<button mat-button>LIKE</button>
+<button mat-button>SHARE</button>
+</mat-card-actions> -->
