@@ -1,9 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ConfigService } from './weather-config/config.service';
-import { Weather } from './weather-config/weather';
+import { WeatherAPI } from './weather-config/weatherAPI';
 // import citiesJSON from '../assets/city.list.json';
 import { CityList } from './weather-config/city-list';
 import { Subscription } from 'rxjs';
+import { Weather } from './interfaces/weather';
+import { WeatherDetail } from './interfaces/weather-detail';
 
 @Component({
   selector: 'app-root',
@@ -12,16 +14,9 @@ import { Subscription } from 'rxjs';
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'weather';
-  allWeatherData: Weather[] = [];
-  weather!: { main: string; description: string; icon: string };
-  weatherDetails!: {
-    temp: number;
-    feels_like: number;
-    temp_min: number;
-    temp_max: number;
-    pressure: number;
-    humidity: number;
-  };
+  allWeatherData: WeatherAPI[] = [];
+  weather!: Weather;
+  weatherDetails!: WeatherDetail;
   wind!: {
     speed: number;
     deg: number;
@@ -31,7 +26,7 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(private configService: ConfigService) {}
 
   ngOnInit() {
-    this.configService.weatherSubject.subscribe((data: Weather) => {
+    this.configService.weatherSubject.subscribe((data: WeatherAPI) => {
       this.weather = data.weather[0];
       this.weatherDetails = data.main;
       this.wind = data.wind;

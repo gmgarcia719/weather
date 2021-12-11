@@ -1,4 +1,4 @@
-export interface Weather {
+export interface WeatherAPI {
   coord: { lon: number; lat: number };
 
   weather: [
